@@ -45,29 +45,29 @@ export class AppComponent {
     constructor(private ngZone: NgZone) {
         this.characters = JSON.parse(charactersDataJSON);
 
-        chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-            if (sender.tab && message.status) {
-
-                this.ngZone.run(() => {
-                    this.characters[this.i] = Object.assign({}, this.characters[this.i], message.result);
-
-                    console.log(this.characters);
-
-                    this.i++;
-
-                    if (this.characters.length - 1 >= this.i) {
-                        sendResponse({
-                            nextLink: this.characters[this.i].link
-                        });
-                    } else {
-                        console.log(this.characters);
-                        console.log(JSON.stringify(this.characters));
-                    }
-                });
-
-                return true;
-            }
-        })
+        // chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        //     if (sender.tab && message.status) {
+        //
+        //         this.ngZone.run(() => {
+        //             this.characters[this.i] = Object.assign({}, this.characters[this.i], message.result);
+        //
+        //             console.log(this.characters);
+        //
+        //             this.i++;
+        //
+        //             if (this.characters.length - 1 >= this.i) {
+        //                 sendResponse({
+        //                     nextLink: this.characters[this.i].link
+        //                 });
+        //             } else {
+        //                 console.log(this.characters);
+        //                 console.log(JSON.stringify(this.characters));
+        //             }
+        //         });
+        //
+        //         return true;
+        //     }
+        // })
     }
 
     begin() {
