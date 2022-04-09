@@ -31,6 +31,8 @@ class Character {
     enhancedSkill1?: Skill;
     skill2?: Skill;
     enhancedSkill2?: Skill;
+    skill3?: Skill;
+    enhancedSkill3?: Skill;
 }
 
 @Component({
@@ -44,6 +46,8 @@ export class AppComponent {
 
     constructor(private ngZone: NgZone) {
         this.characters = JSON.parse(charactersDataJSON);
+
+        console.log(this.characters.map(each => `=IMAGE("${each.smallIcon}")`).join('\n'));
 
         // chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         //     if (sender.tab && message.status) {
@@ -67,7 +71,7 @@ export class AppComponent {
         //
         //         return true;
         //     }
-        // })
+        // });
     }
 
     begin() {

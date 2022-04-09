@@ -31,6 +31,8 @@ const skillTitles = [
     "絶技アビリティ(1)",
     "アビリティ(2)",
     "絶技アビリティ(2)",
+    "アビリティ(3)",
+    "絶技アビリティ(3)",
     "奥義",
 ];
 
@@ -45,6 +47,8 @@ const skillTitles = [
     'enhancedSkill1',
     'skill2',
     'enhancedSkill2',
+    'skill3',
+    'enhancedSkill3',
     'strategy'
 ].forEach((each, i) => {
     const $cell = $('h3:contains(ステータス・スキル)+table+table tr').filter(function () {

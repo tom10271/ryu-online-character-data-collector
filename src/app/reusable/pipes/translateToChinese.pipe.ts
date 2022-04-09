@@ -3,6 +3,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({ name: 'translateToChinese' })
 export class TranslateToChinesePipe implements PipeTransform {
     transform(value: any) {
+        return value;
+
+        if (!value) {
+            return '';
+        }
+
         let result = value;
 
         [
@@ -16,6 +22,7 @@ export class TranslateToChinesePipe implements PipeTransform {
             ['単体', '單體'],
             ['ボス', 'Boss'],
             ['防御', '防禦'],
+            ['攻撃', '攻擊'],
             ['会心率', '爆擊率'],
             ['タイプ', '型'],
             ['キャラクター', '角色'],
@@ -73,7 +80,11 @@ export class TranslateToChinesePipe implements PipeTransform {
         ].forEach((args) => {
             let [match, replaceWith] = args;
 
-            result = result.replace(new RegExp(match, 'gm'), replaceWith);
+            const temp = result.replace(new RegExp(match, 'gm'), replaceWith);
+
+            if (temp) {
+                result = temp;
+            }
         });
 
         return result;
