@@ -1,3 +1,6 @@
+// Run only if the extension has not enabled, otherwise the jQuery v3 injected will break things
+// making page changing fails.
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -19,7 +22,7 @@ const result = [];
 //                         title: 'レアリティ',
 //                         value: rankType
 //                     }]
-//                     ) {
+//                 ) {
 //                     $('.search03 h3:contains(' + title + ')').parent().find('input:checked').each(function () {
 //                         $(this).click();
 //                     });
@@ -32,6 +35,8 @@ const result = [];
 //
 //                     await sleep(200);
 //                 }
+//
+//                 console.log({elementalType, roleType, rankType});
 //
 //                 $('.btnWrap-search input[type=submit]').click();
 //
@@ -57,12 +62,14 @@ const result = [];
 //                         false === $('.pager li:last-child').hasClass('pager__current') &&
 //                         $('.sys-result p.notice:contains(該当するキャラクターはありません。)').length === 0
 //                     ) {
-//                         $('.pager .pager__current+li a').click();
+//                         $('.pager .pager__current+li a').trigger('click');
 //
 //                         hasNotFinished = true;
 //                     } else {
 //                         hasNotFinished = false;
 //                     }
+//
+//                     console.log({hasNotFinished});
 //                 } while (hasNotFinished);
 //             }
 //         }
@@ -71,7 +78,7 @@ const result = [];
 //     console.log(JSON.stringify(result));
 // }
 //
-// collectCharacterLinksAndThumbnail();
+// await collectCharacterLinksAndThumbnail();
 
 function collectIndividualCharacterData() {
     const result = {
@@ -98,6 +105,8 @@ function collectIndividualCharacterData() {
             description: $cell.find('p').text(),
         };
     });
+
+    result.characteristics = Array.from($('td.td25').map((p, each) => each.innerHTML)).filter(each => each != "ー")
 
     console.log(result);
 }

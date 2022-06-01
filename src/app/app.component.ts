@@ -33,6 +33,8 @@ class Character {
     enhancedSkill2?: Skill;
     skill3?: Skill;
     enhancedSkill3?: Skill;
+
+    characteristics?: string[];
 }
 
 @Component({
@@ -53,6 +55,9 @@ export class AppComponent {
         //     if (sender.tab && message.status) {
         //
         //         this.ngZone.run(() => {
+        //             message.result.characteristics = message.result.characteristics instanceof Array ?
+        //                 message.result.characteristics.join(' | ') : '';
+        //
         //             this.characters[this.i] = Object.assign({}, this.characters[this.i], message.result);
         //
         //             console.log(this.characters);

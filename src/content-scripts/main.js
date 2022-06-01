@@ -20,6 +20,8 @@ const result = {
     result[each] = $('h3:contains(ステータス・スキル)+table tr:nth-child(' + (i + 2) + ') td:last-child').text().replace(',', '') / 1
 });
 
+result.characteristics = Array.from($('td.td25').map((p, each) => each.innerHTML)).filter(each => each != "ー");
+
 const skillTitles = [
     "リーダースキル",
     "絶技リーダースキル",
@@ -72,6 +74,6 @@ const skillTitles = [
     }
 });
 
-chrome.runtime.sendMessage({status: "ACTION_FINISHED", result}, function ({nextLink}) {
+chrome.runtime.sendMessage({ status: "ACTION_FINISHED", result }, function ({ nextLink }) {
     location.href = nextLink;
 });
