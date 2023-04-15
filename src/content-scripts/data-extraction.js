@@ -23,11 +23,11 @@ const result = [];
 //                         value: rankType
 //                     }]
 //                 ) {
-//                     $('.search03 h3:contains(' + title + ')').parent().find('input:checked').each(function () {
+//                     $(`.search03 h3:contains(${title})`).parent().find('input:checked').each(function () {
 //                         $(this).click();
 //                     });
 //
-//                     $('.search03 h3:contains(' + title + ')').parent().find('label')
+//                     $(`.search03 h3:contains(${title})`).parent().find('label')
 //                         .filter(function () {
 //                             return $(this).text() === value;
 //                         })

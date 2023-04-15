@@ -51,32 +51,32 @@ export class AppComponent {
 
         console.log(this.characters.map(each => `=IMAGE("${each.smallIcon}")`).join('\n'));
 
-        // chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-        //     if (sender.tab && message.status) {
-        //
-        //         this.ngZone.run(() => {
-        //             message.result.characteristics = message.result.characteristics instanceof Array ?
-        //                 message.result.characteristics.join(' | ') : '';
-        //
-        //             this.characters[this.i] = Object.assign({}, this.characters[this.i], message.result);
-        //
-        //             console.log(this.characters);
-        //
-        //             this.i++;
-        //
-        //             if (this.characters.length - 1 >= this.i) {
-        //                 sendResponse({
-        //                     nextLink: this.characters[this.i].link
-        //                 });
-        //             } else {
-        //                 console.log(this.characters);
-        //                 console.log(JSON.stringify(this.characters));
-        //             }
-        //         });
-        //
-        //         return true;
-        //     }
-        // });
+        chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+            if (sender.tab && message.status) {
+
+                this.ngZone.run(() => {
+                    message.result.characteristics = message.result.characteristics instanceof Array ?
+                        message.result.characteristics.join(' | ') : '';
+
+                    this.characters[this.i] = Object.assign({}, this.characters[this.i], message.result);
+
+                    console.log(this.characters);
+
+                    this.i++;
+
+                    if (this.characters.length - 1 >= this.i) {
+                        sendResponse({
+                            nextLink: this.characters[this.i].link
+                        });
+                    } else {
+                        console.log(this.characters);
+                        console.log(JSON.stringify(this.characters));
+                    }
+                });
+
+                return true;
+            }
+        });
     }
 
     begin() {

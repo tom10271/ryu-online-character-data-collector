@@ -5,7 +5,7 @@
 <table>
     <thead>
     <tr>
-        <th></th>
+        <th>Image</th>
         <th>屬性</th>
         <th>類型</th>
         <th>稀有度</th>
@@ -18,9 +18,10 @@
 
         <th>奧義</th>
         <th>隊長技能</th>
-        <th>能力1</th>
-        <th>能力2</th>
-        <th>能力3</th>
+        <th>能力</th>
+<!--        <th>能力1</th>-->
+<!--        <th>能力2</th>-->
+<!--        <th>能力3</th>-->
         <th>戰鬥技</th>
         <th>戰鬥技 CT</th>
         <th>熱血技</th>
@@ -28,9 +29,10 @@
         <th>熱血技 消耗</th>
 
         <th>開眼 - 隊長技能</th>
-        <th>開眼 - 能力1</th>
-        <th>開眼 - 能力2</th>
-        <th>開眼 - 能力3</th>
+        <th>開眼 - 能力</th>
+<!--        <th>開眼 - 能力1</th>-->
+<!--        <th>開眼 - 能力2</th>-->
+<!--        <th>開眼 - 能力3</th>-->
         <th>開眼 - 戰鬥技</th>
         <th>開眼 - 戰鬥技 CT</th>
         <th>開眼 - 熱血技</th>
@@ -41,7 +43,8 @@
     </thead>
     <tbody>
     <tr *ngFor="let character of characters">
-        <td><img [attr.src]="character.smallIcon" [attr.alt]="character.name"/></td>
+<!--        <td><img [attr.src]="character.smallIcon" [attr.alt]="character.name"/></td>-->
+        <td>=IMAGE("{{ character.smallIcon }}")</td>
         <td>{{ character.elementalType }}</td>
         <td>{{ character.roleType }}</td>
         <td>{{ character.rankType }}</td>
@@ -54,9 +57,14 @@
         <td>{{ character.strategy?.description | translateToChinese }}</td>
 
         <td>{{ character.leaderSkill?.description | translateToChinese }}</td>
-        <td>{{ character.skill1?.description | translateToChinese }}</td>
-        <td>{{ character.skill2?.description | translateToChinese }}</td>
-        <td>{{ character.skill3?.description | translateToChinese }}</td>
+        <td>
+            {{ character.skill1?.description | translateToChinese }}<br/>
+            {{ character.skill2?.description | translateToChinese }}<br/>
+            {{ character.skill3?.description | translateToChinese }}
+        </td>
+<!--        <td>{{ character.skill1?.description | translateToChinese }}</td>-->
+<!--        <td>{{ character.skill2?.description | translateToChinese }}</td>-->
+<!--        <td>{{ character.skill3?.description | translateToChinese }}</td>-->
         <td>{{ character.battleSkill?.description | translateToChinese }}</td>
         <td>{{ character.battleSkill?.coolDownTime }}</td>
         <td>{{ character.hitAttack?.description | translateToChinese }}</td>
@@ -64,9 +72,15 @@
         <td>{{ character.hitAttack?.cost }}</td>
 
         <td>{{ character.enhancedLeaderSkill?.description | translateToChinese }}</td>
-        <td>{{ character.enhancedSkill1?.description | translateToChinese }}</td>
-        <td>{{ character.enhancedSkill2?.description | translateToChinese }}</td>
-        <td>{{ character.enhancedSkill3?.description | translateToChinese }}</td>
+        <td>
+            {{ character.enhancedSkill1?.description | translateToChinese }}<br/>
+            {{ character.enhancedSkill2?.description | translateToChinese }}<br/>
+            {{ character.enhancedSkill3?.description | translateToChinese }}
+        </td>
+
+<!--        <td>{{ character.enhancedSkill1?.description | translateToChinese }}</td>-->
+<!--        <td>{{ character.enhancedSkill2?.description | translateToChinese }}</td>-->
+<!--        <td>{{ character.enhancedSkill3?.description | translateToChinese }}</td>-->
         <td>{{ character.enhancedBattleSkill?.description | translateToChinese }}</td>
         <td>{{ character.enhancedBattleSkill?.coolDownTime }}</td>
         <td>{{ character.enhancedHitAttack?.description | translateToChinese }}</td>
